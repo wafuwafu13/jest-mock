@@ -17,9 +17,9 @@ const getByAxios = require("./axios");
 // jest.mock("axios");
 // axios.get.mockImplementation(() => "foo");
 
-jest.spyOn(axios, 'get').mockImplementation(() => 'foo');
+jest.spyOn(axios, 'get').mockImplementation(() => Promise.resolve('foo'));
 
-it("axios", () => {
-  const data = getByAxios();
+it("axios", async () => {
+  const data = await getByAxios();
   expect(data).toBe("foo");
 });
